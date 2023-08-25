@@ -33,12 +33,16 @@
       <td><img width="100" height="100" style="object-fit: cover" src="/images/${pro.imageUrl}" alt="${pro.productName}"></td>
       <td>${pro.productPrice}</td>
       <td>${pro.stock}</td>
-      <td><a href="">Edit</a></td>
-      <td><a href="">Delete</a></td>
+      <td><a href="/edit/${pro.code}">Edit</a></td>
+      <td><a onclick="return confirm('Are u sure want to delete this item ?')" href="/delete/${pro.code}">Delete</a></td>
     </tr>
   </c:forEach>
 
   </tbody>
 </table>
+
+<div>
+<%--  <img src="/images/kim-sejeong.jpg" alt="#">--%>
+</div>
 </body>
 </html>

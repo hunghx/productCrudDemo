@@ -17,6 +17,7 @@ import java.io.IOException;
 @ComponentScan(basePackages = {"ra.controller","ra.service","ra.dao"})
 public class AppConfig implements WebMvcConfigurer {
     private final String uploadPath ="C:\\Users\\hung1\\OneDrive\\Desktop\\productCRUD\\src\\main\\webapp\\WEB-INF\\upload\\";
+    private final String uploadPath2 ="C:\\Users\\hung1\\OneDrive\\Desktop\\productCRUD\\src\\main\\webapp\\WEB-INF\\css\\";
     // cấu hình view sử dụng file jsp
     @Bean
     public ViewResolver viewResolver(){
@@ -29,13 +30,13 @@ public class AppConfig implements WebMvcConfigurer {
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getResolver() throws IOException {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSizePerFile(52428800);
+        resolver.setMaxUploadSizePerFile(52428800);// 50MB
         return resolver;
     }
     // cấu hình xử lí đường dẫn
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/images/**")
-                .addResourceLocations("file:"+uploadPath);
+        registry.addResourceHandler("/images/**","/css/**")
+                .addResourceLocations("file:"+uploadPath,"file:"+uploadPath2);
     }
 }
